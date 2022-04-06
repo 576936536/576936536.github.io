@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>你好世界</div>
+    <script>
+        var newArray = [22,23,1,52,12]
+        var arrayAll = [4,5,6,2,3,11,...newArray]
+        function testArry(list) {   //创建函数
+            console.log("当前输出的值是什么？11111");
+
+            var mid = list.length % 2 == 0 ? list.length / 2 : (list.length + 1) / 2; //取出数组中中间的数字
+            var left = [];		//创建左边的空数组
+            var right = [];		//创建右边的空数组
+            if(list.length < 2){
+                return list;		//递归的结束条件
+        }
+        for(var i = 0; i < list.length; i++) {    //循环遍历
+            if(mid != i && list[i] < list[mid]) {      // 不让数组中 中间的数 与自己进行比较
+                left.push(list[i]) //如果数字比中间数小 就放到左边的数组
+            }
+            if(mid != i && list[i] > list[mid]) {
+                right.push(list[i])  //如果数字比中间数大 就放到右边的数组
+            }
+        }
+        console.log("当前输出的值是什么？22",left,list[mid],right);
+
+        return testArry(left).concat(list[mid]).concat(testArry(right)) //递归 将左边的数组与右边的数组再进行划分
+        }
+
+        console.log("当前输出的值是什么？",testArry(arrayAll));
+
+    </script>
+</body>
+</html>
